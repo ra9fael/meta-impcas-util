@@ -9,9 +9,10 @@ LIC_FILES_CHKSUM = "file://zellij-LICENSE;md5=b2c649e7655c23ffce7acb59c25282f0"
 COMPATIBLE_HOST = "(aarch64|x86_64).*-linux"
 
 SRC_URI = "https://github.com/zellij-org/zellij/releases/download/v0.45.1/zellij-aarch64-unknown-linux-musl.tar.gz;name=bin;subdir=bin \
-           https://github.com/zellij-org/zellij/releases/download/v0.45.1/zellij-x86_64-unknown-linux-musl.tar.gz;name=binx86;subdir=binx86 \
            https://raw.githubusercontent.com/zellij-org/zellij/v0.45.1/LICENSE.md;name=lic;downloadfilename=zellij-LICENSE;subdir=lic \
 "
+SRC_URI:append:x86-64 = " https://github.com/zellij-org/zellij/releases/download/v0.45.1/zellij-x86_64-unknown-linux-musl.tar.gz;name=binx86;subdir=binx86 \ "
+SRC_URI[binx86.sha256sum] = "40bcc2e03f5d5ae8e054e39f676081fe12ab70871506996ba595834c3718eefc"
 SRC_URI[bin.sha256sum] = "05f0802afadd53f8db9514e7cae53c9ae8432fed1b35b8294aa816ee3044a16b"
 SRC_URI[lic.md5sum] = "b2c649e7655c23ffce7acb59c25282f0"
 

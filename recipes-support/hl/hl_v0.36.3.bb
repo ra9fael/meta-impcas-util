@@ -9,9 +9,10 @@ LIC_FILES_CHKSUM = "file://hl-LICENSE;md5=fcede59d78ce4f38ef4ce537a1d98e33"
 COMPATIBLE_HOST = "(aarch64|x86_64).*-linux"
 
 SRC_URI = "https://github.com/pamburus/hl/releases/download/v0.36.3/hl-linux-arm64-gnu.tar.gz;name=bin;subdir=bin \
-           https://github.com/pamburus/hl/releases/download/v0.36.3/hl-linux-x86_64-gnu.tar.gz;name=binx86;subdir=binx86 \
            https://raw.githubusercontent.com/pamburus/hl/v0.36.3/LICENSE;name=lic;downloadfilename=hl-LICENSE;subdir=lic \
 "
+SRC_URI:append:x86-64 = " https://github.com/pamburus/hl/releases/download/v0.36.3/hl-linux-x86_64-gnu.tar.gz;name=binx86;subdir=binx86 \ "
+SRC_URI[binx86.sha256sum] = "b8e9de61f003a8879d619adce5b3253021678888ee4b616b7cda756c4d4c84b2"
 SRC_URI[bin.sha256sum] = "dabffd22a0ea80b149ae6c500a9eb5b7112c280a305172e9cc3879a29bd03f65"
 SRC_URI[lic.md5sum] = "fcede59d78ce4f38ef4ce537a1d98e33"
 

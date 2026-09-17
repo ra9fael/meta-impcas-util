@@ -11,9 +11,10 @@ LIC_FILES_CHKSUM = "file://yq-LICENSE;md5=e40a0dcd62f8269b9bff37fe9aa7dcc2"
 COMPATIBLE_HOST = "(aarch64|x86_64).*-linux"
 
 SRC_URI = "https://github.com/mikefarah/yq/releases/download/v4.53.6/yq_linux_arm64.tar.gz;name=bin;subdir=bin \
-           https://github.com/mikefarah/yq/releases/download/v4.53.6/yq_linux_amd64.tar.gz;name=binx86;subdir=binx86 \
            https://raw.githubusercontent.com/mikefarah/yq/v4.53.6/LICENSE;name=lic;downloadfilename=yq-LICENSE;subdir=lic \
 "
+SRC_URI:append:x86-64 = " https://github.com/mikefarah/yq/releases/download/v4.53.6/yq_linux_amd64.tar.gz;name=binx86;subdir=binx86 \ "
+SRC_URI[binx86.sha256sum] = "38b907b21b1b04327fb9481c595331d925a67c6ee1aabd0ef419d0b7d12dfb3d"
 SRC_URI[bin.sha256sum] = "d5e7531273d45c5d4b7abb4a1597c47a0fecb5d6b081dfa755064b38ffcc34f4"
 SRC_URI[lic.md5sum] = "e40a0dcd62f8269b9bff37fe9aa7dcc2"
 
