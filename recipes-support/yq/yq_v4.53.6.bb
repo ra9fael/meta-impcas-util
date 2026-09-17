@@ -5,10 +5,13 @@ HOMEPAGE = "https://github.com/mikefarah/yq"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://yq-LICENSE;md5=e40a0dcd62f8269b9bff37fe9aa7dcc2"
 
-# Prebuilt aarch64 release assets only.
-COMPATIBLE_HOST = "aarch64.*-linux"
+# Prebuilt aarch64/x86_64 release assets; upstream also publishes
+# arm32 assets (see the release page) -- add SRC_URI:append:armv7a etc.
+# if a 32-bit ARM machine is ever needed.
+COMPATIBLE_HOST = "(aarch64|x86_64).*-linux"
 
 SRC_URI = "https://github.com/mikefarah/yq/releases/download/v4.53.6/yq_linux_arm64.tar.gz;name=bin;subdir=bin \
+           https://github.com/mikefarah/yq/releases/download/v4.53.6/yq_linux_amd64.tar.gz;name=binx86;subdir=binx86 \
            https://raw.githubusercontent.com/mikefarah/yq/v4.53.6/LICENSE;name=lic;downloadfilename=yq-LICENSE;subdir=lic \
 "
 SRC_URI[bin.sha256sum] = "d5e7531273d45c5d4b7abb4a1597c47a0fecb5d6b081dfa755064b38ffcc34f4"
