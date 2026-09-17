@@ -17,7 +17,9 @@ SRC_URI[lic.md5sum] = "0c9c77a4b70683658eb47e5486e20148"
 S = "${WORKDIR}/lic"
 
 inherit github-release
-GH_BINS = "exbootimage:exbootimage fpgautil:fpgautil mkbootimage:mkbootimage"
+# Upstream bundles fpgautil too, but it conflicts with fpga-manager-script
+# (both install /usr/bin/fpgautil); fpga-manager-script stays authoritative.
+GH_BINS = "exbootimage:exbootimage mkbootimage:mkbootimage"
 
 # mkbootimage links against libelf.
 RDEPENDS:${PN} += "libelf"
