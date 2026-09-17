@@ -5,13 +5,18 @@
 # vimrc the recipe installs; ownership stays with the vim-vimrc package.
 # The vimrc expects the fzf binary and vim integration from the fzf
 # package in this layer.
+#
+# Everything is scoped to class-target: the vim recipe also builds a
+# native variant (BBCLASSEXTEND), and unscoped changes would alter
+# vim-native's task signatures -- breaking the PetaLinux locked-sigs
+# sstate reuse for it (see build/conf/locked-sigs.inc).
 
-FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend:class-target := "${THISDIR}/files:"
 
-SRC_URI += "file://vimrc"
+SRC_URI:append:class-target = "file://vimrc"
 
 RDEPENDS:${PN}-vimrc += "fzf"
 
-do_install:append() {
+do_install:append:class-target() {
     install -m 0644 ${WORKDIR}/vimrc ${D}${datadir}/vim/vimrc
 }
