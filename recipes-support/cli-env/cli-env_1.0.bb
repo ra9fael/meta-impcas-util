@@ -10,6 +10,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "file://starship.sh \
            file://zoxide.sh \
            file://yazi.sh \
+           file://locale.sh \
            file://uv.toml \
 "
 S = "${WORKDIR}"
@@ -17,13 +18,14 @@ S = "${WORKDIR}"
 do_install() {
     install -d ${D}${sysconfdir}/profile.d ${D}${sysconfdir}/uv
     install -m 0644 ${WORKDIR}/starship.sh ${WORKDIR}/zoxide.sh \
-        ${WORKDIR}/yazi.sh ${D}${sysconfdir}/profile.d/
+        ${WORKDIR}/yazi.sh ${WORKDIR}/locale.sh ${D}${sysconfdir}/profile.d/
     install -m 0644 ${WORKDIR}/uv.toml ${D}${sysconfdir}/uv/uv.toml
 }
 
 FILES:${PN} = "${sysconfdir}/profile.d/starship.sh \
                ${sysconfdir}/profile.d/zoxide.sh \
                ${sysconfdir}/profile.d/yazi.sh \
+               ${sysconfdir}/profile.d/locale.sh \
                ${sysconfdir}/uv/uv.toml \
 "
 
