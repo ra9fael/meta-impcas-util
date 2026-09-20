@@ -30,6 +30,9 @@ FILES:${PN} = "${sysconfdir}/profile.d/starship.sh \
 "
 
 # locale.sh exports LANG=C.UTF-8; poky ships no locale data (IMAGE_LINGUAS
-# is cleared) so the C.utf8 binary locale must come along for setlocale()
-# to actually resolve it.
-RDEPENDS:${PN} = "starship zoxide uv yazi bash c-utf8-locale"
+# is cleared) so a locale package must come along for setlocale() to
+# resolve it. locale-base-c pulls the prebuilt glibc C.UTF-8 locale, which
+# the image class merges into /usr/lib/locale/locale-archive at rootfs
+# time (the glibc-binary-localedata-* package is removed after the merge,
+# so it never appears in the rootfs manifest).
+RDEPENDS:${PN} = "starship zoxide uv yazi bash locale-base-c"
