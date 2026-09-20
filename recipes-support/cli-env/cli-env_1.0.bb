@@ -29,4 +29,7 @@ FILES:${PN} = "${sysconfdir}/profile.d/starship.sh \
                ${sysconfdir}/uv/uv.toml \
 "
 
-RDEPENDS:${PN} = "starship zoxide uv yazi bash"
+# locale.sh exports LANG=C.UTF-8; poky ships no locale data (IMAGE_LINGUAS
+# is cleared) so the C.utf8 binary locale must come along for setlocale()
+# to actually resolve it.
+RDEPENDS:${PN} = "starship zoxide uv yazi bash c-utf8-locale"
