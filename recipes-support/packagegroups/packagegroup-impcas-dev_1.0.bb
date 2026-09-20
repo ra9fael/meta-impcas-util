@@ -14,6 +14,8 @@ RDEPENDS:${PN} = " \
     cmake \
     diffstat \
     flex \
+    groff-doc \
+    man-db-doc \
     meson \
     ninja \
     patch \
@@ -23,3 +25,7 @@ RDEPENDS:${PN} = " \
     quilt \
     swig \
 "
+# groff-doc/man-db-doc: poky files recipes' man pages into -doc packages that
+# images don't install by default. man-pages' man(7) .so-includes groff_man.7
+# (groff-doc) and man(1)/apropos(1) live in man-db-doc -- without them `man`
+# fails with "can't resolve man7/groff_man.7" / missing entries.
